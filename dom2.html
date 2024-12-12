@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Changer</title>
+  <style>
+    /* General reset for better styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    /* Centering and spacing for the container */
+    .container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Styling the color box */
+    #color-box {
+      width: 200px;
+      height: 200px;
+      background-color: #3498db;
+      margin: 20px auto;
+      border: 2px solid #2c3e50;
+      border-radius: 10px;
+    }
+
+    /* Styling the button */
+    #change-color-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #e74c3c;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #change-color-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Color Changer</h1>
+    <div id="color-box"></div>
+    <button id="change-color-btn">Change Color</button>
+  </div>
+  <script>
+    // Wait for the DOM to fully load
+    document.addEventListener("DOMContentLoaded", () => {
+      const colorBox = document.getElementById("color-box");
+      const changeColorBtn = document.getElementById("change-color-btn");
+
+      // Function to generate a random color
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      // Event listener to change the background color of the box
+      changeColorBtn.addEventListener("click", () => {
+        const randomColor = getRandomColor();
+        colorBox.style.backgroundColor = randomColor;
+      });
+    });
+  </script>
+</body>
+</html>
